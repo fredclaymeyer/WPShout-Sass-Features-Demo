@@ -1,0 +1,11 @@
+/* DEMO 1 HTML MARKUP
+----------------------*/
+<a class="demo-round-button" href="#">Blue</a> <a class="demo-round-button red" href="#">Red</a> <a class="demo-round-button gray" href="#">Gray</a> <a class="demo-round-button lime" href="#">Lime!</a>
+
+/* DEMO 2 HTML MARKUP
+----------------------*/
+<div class="demo-block demo-normal-block">I'm okay</div><div class="demo-block demo-standout-block">I'm okay too!</div>
+
+/* DEMO 3 HTML MARKUP
+----------------------*/
+<p class="demo-p">I'm normal-sized, <code>rem</code>s-based, and have a <code>px</code> fallback!</p> <p class="demo-small">I'm small, <code>rem</code>s-based, and have a <code>px</code> fallback!</p>

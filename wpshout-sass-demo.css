@@ -1,0 +1,92 @@
+/* DEMO 1: EASY "LIGHTER ON HOVER" GHOST BUTTONS
+---------------------------------------------------------*/
+/* Only nonrepeatable styles go in the mixin
+---------------------------------------------------------*/
+/* Round ghost button, lightens on hover, defaults to blue
+---------------------------------------------------------*/
+.demo-round-button {
+  /* All repeatable styles for button */
+  text-transform: uppercase;
+  transition: all .2s ease-in-out;
+  font-family: 'Titillium Web', 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+  font-weight: bold;
+  padding: .25em .5em;
+  display: inline-block;
+  border-radius: .5em;
+  /* Including with blue default */
+  color: #00f;
+  border: 1px #00f solid;
+  /* Red button */
+  /* Gray button */
+  /* Lime green button! */ }
+  .demo-round-button:hover {
+    text-decoration: none; }
+  .demo-round-button:visited {
+    color: #00f; }
+  .demo-round-button:hover, .demo-round-button:visited:hover, .demo-round-button:focus, .demo-round-button:visited:focus {
+    color: #9999ff;
+    border: 1px #9999ff solid; }
+  .demo-round-button.red {
+    color: #f00;
+    border: 1px #f00 solid; }
+    .demo-round-button.red:visited {
+      color: #f00; }
+    .demo-round-button.red:hover, .demo-round-button.red:visited:hover, .demo-round-button.red:focus, .demo-round-button.red:visited:focus {
+      color: #ff9999;
+      border: 1px #ff9999 solid; }
+  .demo-round-button.gray {
+    color: #333;
+    border: 1px #333 solid; }
+    .demo-round-button.gray:visited {
+      color: #333; }
+    .demo-round-button.gray:hover, .demo-round-button.gray:visited:hover, .demo-round-button.gray:focus, .demo-round-button.gray:visited:focus {
+      color: gray;
+      border: 1px gray solid; }
+  .demo-round-button.lime {
+    color: #0f0;
+    border: 1px #0f0 solid; }
+    .demo-round-button.lime:visited {
+      color: #0f0; }
+    .demo-round-button.lime:hover, .demo-round-button.lime:visited:hover, .demo-round-button.lime:focus, .demo-round-button.lime:visited:focus {
+      color: #99ff99;
+      border: 1px #99ff99 solid; }
+
+/* DEMO 2: ENSURED TEXT CONTRAST FOR TEXT/BACKGROUND PAIRS
+---------------------------------------------------------*/
+/* Take text and background colors, recolor text if needed
+---------------------------------------------------------*/
+/* Nonrepeatable block styles
+---------------------------------------------------------*/
+/* Repeatable block styles
+---------------------------------------------------------*/
+.demo-block {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  display: inline-block;
+  line-height: 120px; }
+
+/* Whoops! I've accidentally set my background and text the same
+---------------------------------------------------------*/
+.demo-standout-block {
+  background: #f00;
+  color: #ff9999; }
+
+.demo-normal-block {
+  background: #e0e0e0;
+  color: #333; }
+
+/* DEMO 3: THINK IN PX, WRITE IN REMS
+---------------------------------------------------------*/
+/* This is WPShout's base font size */
+/* Need to get unitless values
+---------------------------------------------------------*/
+/* Put in pixels, get rems
+---------------------------------------------------------*/
+.demo-p {
+  font-size: 16px;
+  font-size: 0.66667rem; }
+
+.demo-small {
+  font-size: 10px;
+  font-size: 0.41667rem; }

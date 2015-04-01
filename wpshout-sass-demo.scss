@@ -1,0 +1,136 @@
+/* DEMO 1: EASY "LIGHTER ON HOVER" GHOST BUTTONS
+---------------------------------------------------------*/
+
+/* Only nonrepeatable styles go in the mixin
+---------------------------------------------------------*/
+@mixin lighten-on-hover($color: #00f) {
+	color: $color;
+	border: 1px $color solid;
+
+	&:visited {
+		color: $color;
+	}
+
+	&:hover, &:visited:hover, &:focus, &:visited:focus {
+		$lightened: lighten($color, 30%);
+		color: $lightened;
+		border: 1px $lightened solid;
+	}
+}
+
+/* Round ghost button, lightens on hover, defaults to blue
+---------------------------------------------------------*/
+.demo-round-button {
+	/* All repeatable styles for button */
+	text-transform: uppercase;
+	transition: all .2s ease-in-out;
+	font-family: 'Titillium Web', 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+	font-weight: bold;
+	padding: .25em .5em;
+	display: inline-block;
+	border-radius: .5em;
+	&:hover {
+		text-decoration: none;
+	}
+
+	/* Including with blue default */	
+	@include lighten-on-hover;
+
+	/* Red button */
+	&.red {
+		@include lighten-on-hover(#f00);
+	}
+
+	/* Gray button */
+	&.gray {
+		@include lighten-on-hover(#333);
+	}
+
+	/* Lime green button! */
+	&.lime {
+		@include lighten-on-hover(#0f0);
+	}
+}
+
+
+/* DEMO 2: ENSURED TEXT CONTRAST FOR TEXT/BACKGROUND PAIRS
+---------------------------------------------------------*/
+
+/* Take text and background colors, recolor text if needed
+---------------------------------------------------------*/
+@function ensureTextContrast($text-color, $background-color) {
+	/* Getting value for contrast */
+	$diff: lightness($text-color) - lightness($background-color);
+
+	/* If high enough contrast, @return original color */
+	@if abs($diff) > 15% {
+		@return $text-color;
+	}
+
+	/* Dark background; lighten */
+	@if lightness($background-color) < lightness(#aaaaaa) {
+		@return lighten($text-color, 30%);
+	} 
+
+	/* Light background; darken */
+	@else {
+		@return darken($text-color, 30%);
+	}
+}
+
+/* Nonrepeatable block styles
+---------------------------------------------------------*/
+@mixin colored-block($background: #f00, $color: #000) {
+	background: $background;
+	color: ensureTextContrast($color, $background);
+}
+
+/* Repeatable block styles
+---------------------------------------------------------*/
+.demo-block {
+	width: 120px;
+	height: 120px;
+	text-align: center;
+	display: inline-block;
+	line-height: 120px;
+}
+
+/* Whoops! I've accidentally set my background and text the same
+---------------------------------------------------------*/
+$standout-background: #f00;
+$accent-text-color: #f00;
+
+.demo-standout-block {
+	@include colored-block($standout-background, $accent-text-color);
+}
+
+.demo-normal-block {
+	@include colored-block(#e0e0e0, #333);	
+}
+
+
+/* DEMO 3: THINK IN PX, WRITE IN REMS
+---------------------------------------------------------*/
+
+$base-font-size: 24px; /* This is WPShout's base font size */
+
+/* Need to get unitless values
+---------------------------------------------------------*/
+@function unitless($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+/* Put in pixels, get rems
+---------------------------------------------------------*/
+@mixin rpx($px: 16, $base: $base-font-size) {
+  font-size: $px + px;
+  font-size: ($px / unitless($base)) + rem;
+}
+
+.demo-p {
+	@include rpx(16);
+}
+
+.demo-small {
+	@include rpx(10);
+}
